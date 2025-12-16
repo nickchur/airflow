@@ -894,3 +894,115 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'pyspark'
 [2025-12-16T08:28:00.497+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_postgres_dag.py
 [2025-12-16T08:28:00.752+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_postgres_dag.py took 0.722 seconds
+[2025-12-16T13:34:16.303+0000] {processor.py:186} INFO - Started process (PID=207) to work on /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:34:16.307+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_postgres_dag.py for tasks to queue
+[2025-12-16T13:34:16.317+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:34:16.316+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:34:16.388+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:34:16.374+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_postgres_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_postgres_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:34:16.401+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:34:16.489+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_postgres_dag.py took 0.208 seconds
+[2025-12-16T13:35:09.417+0000] {processor.py:186} INFO - Started process (PID=303) to work on /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:35:09.425+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_postgres_dag.py for tasks to queue
+[2025-12-16T13:35:09.436+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:35:09.434+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:35:09.560+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:35:09.533+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_postgres_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_postgres_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:35:09.575+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:35:09.734+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_postgres_dag.py took 0.342 seconds
+[2025-12-16T13:36:01.259+0000] {processor.py:186} INFO - Started process (PID=399) to work on /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:36:01.264+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_postgres_dag.py for tasks to queue
+[2025-12-16T13:36:01.273+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:36:01.272+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:36:01.416+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:36:01.380+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_postgres_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_postgres_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:36:01.428+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:36:01.565+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_postgres_dag.py took 0.342 seconds
+[2025-12-16T13:36:34.488+0000] {processor.py:186} INFO - Started process (PID=484) to work on /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:36:34.494+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_postgres_dag.py for tasks to queue
+[2025-12-16T13:36:34.505+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:36:34.501+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:36:34.612+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:36:34.584+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_postgres_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_postgres_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:36:34.617+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:36:34.700+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_postgres_dag.py took 0.240 seconds
+[2025-12-16T13:37:09.880+0000] {processor.py:186} INFO - Started process (PID=570) to work on /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:37:09.883+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_postgres_dag.py for tasks to queue
+[2025-12-16T13:37:09.896+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:37:09.893+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:37:09.992+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:37:09.974+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_postgres_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_postgres_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:37:09.997+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:37:10.074+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_postgres_dag.py took 0.219 seconds
+[2025-12-16T13:37:51.077+0000] {processor.py:186} INFO - Started process (PID=663) to work on /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:37:51.094+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_postgres_dag.py for tasks to queue
+[2025-12-16T13:37:51.114+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:37:51.113+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:37:51.646+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:37:51.594+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_postgres_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_postgres_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:37:51.659+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:37:51.837+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_postgres_dag.py took 0.821 seconds
+[2025-12-16T13:39:30.806+0000] {processor.py:186} INFO - Started process (PID=767) to work on /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:39:30.809+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_postgres_dag.py for tasks to queue
+[2025-12-16T13:39:30.816+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:39:30.815+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:39:30.870+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:39:30.857+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_postgres_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_postgres_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:39:30.874+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:39:30.931+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_postgres_dag.py took 0.141 seconds
+[2025-12-16T13:40:03.708+0000] {processor.py:186} INFO - Started process (PID=852) to work on /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:40:03.711+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_postgres_dag.py for tasks to queue
+[2025-12-16T13:40:03.720+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:40:03.719+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:40:03.761+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:40:03.753+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_postgres_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_postgres_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:40:03.764+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_postgres_dag.py
+[2025-12-16T13:40:03.814+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_postgres_dag.py took 0.139 seconds

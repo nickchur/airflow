@@ -1,0 +1,78 @@
+[2025-12-16T13:31:19.186+0000] {processor.py:186} INFO - Started process (PID=109) to work on /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:31:19.190+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/3.2.2/3.2.2.py for tasks to queue
+[2025-12-16T13:31:19.199+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:31:19.197+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:31:20.484+0000] {processor.py:925} INFO - DAG(s) '3.2.2' retrieved from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:31:21.819+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:31:21.817+0000] {override.py:1912} INFO - Created Permission View: can edit on DAG:3.2.2
+[2025-12-16T13:31:21.917+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:31:21.916+0000] {override.py:1912} INFO - Created Permission View: can delete on DAG:3.2.2
+[2025-12-16T13:31:22.026+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:31:22.026+0000] {override.py:1912} INFO - Created Permission View: can read on DAG:3.2.2
+[2025-12-16T13:31:22.356+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:31:22.355+0000] {override.py:1912} INFO - Created Permission View: can delete on DAG Run:3.2.2
+[2025-12-16T13:31:22.578+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:31:22.577+0000] {override.py:1912} INFO - Created Permission View: can create on DAG Run:3.2.2
+[2025-12-16T13:31:22.839+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:31:22.838+0000] {override.py:1912} INFO - Created Permission View: menu access on DAG Run:3.2.2
+[2025-12-16T13:31:23.070+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:31:23.069+0000] {override.py:1912} INFO - Created Permission View: can read on DAG Run:3.2.2
+[2025-12-16T13:31:23.094+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:31:23.086+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-12-16T13:31:23.295+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:31:23.295+0000] {dag.py:3262} INFO - Creating ORM DAG for 3.2.2
+[2025-12-16T13:31:23.392+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:31:23.392+0000] {dag.py:4180} INFO - Setting next_dagrun for 3.2.2 to 2025-12-15 00:00:00+00:00, run_after=2025-12-16 00:00:00+00:00
+[2025-12-16T13:31:23.521+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/3.2.2/3.2.2.py took 4.365 seconds
+[2025-12-16T13:34:27.618+0000] {processor.py:186} INFO - Started process (PID=224) to work on /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:34:27.648+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/3.2.2/3.2.2.py for tasks to queue
+[2025-12-16T13:34:27.698+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:34:27.697+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:34:27.965+0000] {processor.py:925} INFO - DAG(s) '3.2.2' retrieved from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:34:28.387+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:34:28.386+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-12-16T13:34:28.766+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:34:28.765+0000] {dag.py:4180} INFO - Setting next_dagrun for 3.2.2 to 2025-12-15 00:00:00+00:00, run_after=2025-12-16 00:00:00+00:00
+[2025-12-16T13:34:28.880+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/3.2.2/3.2.2.py took 1.331 seconds
+[2025-12-16T13:35:12.426+0000] {processor.py:186} INFO - Started process (PID=309) to work on /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:35:12.441+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/3.2.2/3.2.2.py for tasks to queue
+[2025-12-16T13:35:12.463+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:35:12.462+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:35:12.609+0000] {processor.py:925} INFO - DAG(s) '3.2.2' retrieved from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:35:12.734+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:35:12.733+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-12-16T13:35:12.884+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:35:12.883+0000] {dag.py:4180} INFO - Setting next_dagrun for 3.2.2 to 2025-12-15 00:00:00+00:00, run_after=2025-12-16 00:00:00+00:00
+[2025-12-16T13:35:13.015+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/3.2.2/3.2.2.py took 0.680 seconds
+[2025-12-16T13:35:59.491+0000] {processor.py:186} INFO - Started process (PID=395) to work on /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:35:59.509+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/3.2.2/3.2.2.py for tasks to queue
+[2025-12-16T13:35:59.536+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:35:59.535+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:35:59.903+0000] {processor.py:925} INFO - DAG(s) '3.2.2' retrieved from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:36:00.158+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:36:00.157+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-12-16T13:36:00.265+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:36:00.262+0000] {dag.py:4180} INFO - Setting next_dagrun for 3.2.2 to 2025-12-15 00:00:00+00:00, run_after=2025-12-16 00:00:00+00:00
+[2025-12-16T13:36:00.367+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/3.2.2/3.2.2.py took 0.943 seconds
+[2025-12-16T13:36:33.032+0000] {processor.py:186} INFO - Started process (PID=479) to work on /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:36:33.042+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/3.2.2/3.2.2.py for tasks to queue
+[2025-12-16T13:36:33.051+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:36:33.051+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:36:33.145+0000] {processor.py:925} INFO - DAG(s) '3.2.2' retrieved from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:36:33.265+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:36:33.264+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-12-16T13:36:33.322+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:36:33.321+0000] {dag.py:4180} INFO - Setting next_dagrun for 3.2.2 to 2025-12-15 00:00:00+00:00, run_after=2025-12-16 00:00:00+00:00
+[2025-12-16T13:36:33.403+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/3.2.2/3.2.2.py took 0.394 seconds
+[2025-12-16T13:37:08.365+0000] {processor.py:186} INFO - Started process (PID=566) to work on /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:37:08.367+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/3.2.2/3.2.2.py for tasks to queue
+[2025-12-16T13:37:08.377+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:37:08.375+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:37:08.632+0000] {processor.py:925} INFO - DAG(s) '3.2.2' retrieved from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:37:08.970+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:37:08.968+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-12-16T13:37:09.287+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:37:09.265+0000] {dag.py:4180} INFO - Setting next_dagrun for 3.2.2 to 2025-12-15 00:00:00+00:00, run_after=2025-12-16 00:00:00+00:00
+[2025-12-16T13:37:09.377+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/3.2.2/3.2.2.py took 1.047 seconds
+[2025-12-16T13:37:40.271+0000] {processor.py:186} INFO - Started process (PID=652) to work on /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:37:40.274+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/3.2.2/3.2.2.py for tasks to queue
+[2025-12-16T13:37:40.280+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:37:40.279+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:37:40.411+0000] {processor.py:925} INFO - DAG(s) '3.2.2' retrieved from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:37:40.476+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:37:40.475+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-12-16T13:37:40.697+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:37:40.696+0000] {dag.py:4180} INFO - Setting next_dagrun for 3.2.2 to 2025-12-15 00:00:00+00:00, run_after=2025-12-16 00:00:00+00:00
+[2025-12-16T13:37:41.187+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/3.2.2/3.2.2.py took 0.935 seconds
+[2025-12-16T13:38:56.033+0000] {processor.py:186} INFO - Started process (PID=711) to work on /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:38:56.047+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/3.2.2/3.2.2.py for tasks to queue
+[2025-12-16T13:38:56.069+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:38:56.068+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:38:56.300+0000] {processor.py:925} INFO - DAG(s) '3.2.2' retrieved from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:38:56.577+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:38:56.576+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-12-16T13:38:56.931+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:38:56.931+0000] {dag.py:4180} INFO - Setting next_dagrun for 3.2.2 to 2025-12-15 00:00:00+00:00, run_after=2025-12-16 00:00:00+00:00
+[2025-12-16T13:38:57.200+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/3.2.2/3.2.2.py took 1.208 seconds
+[2025-12-16T13:39:33.175+0000] {processor.py:186} INFO - Started process (PID=776) to work on /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:39:33.178+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/3.2.2/3.2.2.py for tasks to queue
+[2025-12-16T13:39:33.186+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:39:33.185+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:39:33.271+0000] {processor.py:925} INFO - DAG(s) '3.2.2' retrieved from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:39:33.340+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:39:33.339+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-12-16T13:39:33.415+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:39:33.415+0000] {dag.py:4180} INFO - Setting next_dagrun for 3.2.2 to 2025-12-15 00:00:00+00:00, run_after=2025-12-16 00:00:00+00:00
+[2025-12-16T13:39:33.482+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/3.2.2/3.2.2.py took 0.328 seconds
+[2025-12-16T13:40:05.769+0000] {processor.py:186} INFO - Started process (PID=861) to work on /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:40:05.772+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/3.2.2/3.2.2.py for tasks to queue
+[2025-12-16T13:40:05.777+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:40:05.777+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:40:05.822+0000] {processor.py:925} INFO - DAG(s) '3.2.2' retrieved from /opt/airflow/dags/3.2.2/3.2.2.py
+[2025-12-16T13:40:05.863+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:40:05.863+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-12-16T13:40:05.913+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:40:05.913+0000] {dag.py:4180} INFO - Setting next_dagrun for 3.2.2 to 2025-12-15 00:00:00+00:00, run_after=2025-12-16 00:00:00+00:00
+[2025-12-16T13:40:05.957+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/3.2.2/3.2.2.py took 0.201 seconds

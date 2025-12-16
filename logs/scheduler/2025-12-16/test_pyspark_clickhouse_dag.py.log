@@ -894,3 +894,115 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'pyspark'
 [2025-12-16T08:27:59.911+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
 [2025-12-16T08:28:00.195+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_clickhouse_dag.py took 0.843 seconds
+[2025-12-16T13:34:16.145+0000] {processor.py:186} INFO - Started process (PID=206) to work on /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:34:16.148+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_clickhouse_dag.py for tasks to queue
+[2025-12-16T13:34:16.156+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:34:16.154+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:34:16.221+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:34:16.209+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_clickhouse_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:34:16.226+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:34:16.321+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_clickhouse_dag.py took 0.205 seconds
+[2025-12-16T13:35:08.557+0000] {processor.py:186} INFO - Started process (PID=302) to work on /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:35:08.561+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_clickhouse_dag.py for tasks to queue
+[2025-12-16T13:35:08.572+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:35:08.567+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:35:08.683+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:35:08.649+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_clickhouse_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:35:08.689+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:35:08.913+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_clickhouse_dag.py took 0.399 seconds
+[2025-12-16T13:36:01.201+0000] {processor.py:186} INFO - Started process (PID=398) to work on /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:36:01.205+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_clickhouse_dag.py for tasks to queue
+[2025-12-16T13:36:01.215+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:36:01.212+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:36:01.323+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:36:01.293+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_clickhouse_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:36:01.328+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:36:01.443+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_clickhouse_dag.py took 0.289 seconds
+[2025-12-16T13:36:34.079+0000] {processor.py:186} INFO - Started process (PID=483) to work on /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:36:34.082+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_clickhouse_dag.py for tasks to queue
+[2025-12-16T13:36:34.090+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:36:34.089+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:36:34.238+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:36:34.212+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_clickhouse_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:36:34.252+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:36:34.335+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_clickhouse_dag.py took 0.274 seconds
+[2025-12-16T13:37:09.789+0000] {processor.py:186} INFO - Started process (PID=569) to work on /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:37:09.792+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_clickhouse_dag.py for tasks to queue
+[2025-12-16T13:37:09.825+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:37:09.814+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:37:09.901+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:37:09.886+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_clickhouse_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:37:09.908+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:37:09.998+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_clickhouse_dag.py took 0.234 seconds
+[2025-12-16T13:37:41.659+0000] {processor.py:186} INFO - Started process (PID=655) to work on /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:37:41.674+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_clickhouse_dag.py for tasks to queue
+[2025-12-16T13:37:41.692+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:37:41.690+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:37:42.144+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:37:41.952+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_clickhouse_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:37:42.187+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:37:42.349+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_clickhouse_dag.py took 0.725 seconds
+[2025-12-16T13:39:30.585+0000] {processor.py:186} INFO - Started process (PID=766) to work on /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:39:30.588+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_clickhouse_dag.py for tasks to queue
+[2025-12-16T13:39:30.604+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:39:30.602+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:39:30.650+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:39:30.640+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_clickhouse_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:39:30.653+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:39:30.705+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_clickhouse_dag.py took 0.155 seconds
+[2025-12-16T13:40:03.408+0000] {processor.py:186} INFO - Started process (PID=851) to work on /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:40:03.411+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/test_pyspark_clickhouse_dag.py for tasks to queue
+[2025-12-16T13:40:03.419+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:40:03.418+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:40:03.492+0000] {logging_mixin.py:190} INFO - [2025-12-16T13:40:03.475+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_pyspark_clickhouse_dag.py", line 1, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+[2025-12-16T13:40:03.499+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/test_pyspark_clickhouse_dag.py
+[2025-12-16T13:40:03.583+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/test_pyspark_clickhouse_dag.py took 0.196 seconds
