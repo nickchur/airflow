@@ -1,3 +1,7 @@
 /logs
 /logs/scheduler
 *.log
+*.pyc
+*.pyc
+/.vscode
+/dags/__pycache__
