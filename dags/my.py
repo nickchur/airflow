@@ -65,7 +65,7 @@ def do_chk_meta(**context):
         left join (
             select wf_id, count(distinct wf_name) bd_wf, count(*) bd_row
             from gp_ue_exchange
-            where wf_name <> '_gp_exchange'
+            -- where wf_name <> '_gp_exchange'
             GROUP by 1
         ) b on a.wf_id = b.wf_id
         order by a.wf_id desc, a.wf_key desc
@@ -114,7 +114,7 @@ def choose_branchs(**context):
     branches = ["process_" + row[0] for row in tables if ("process_" + row[0]) in downstream and row[0] != '_gp_exchange']
     return branches if branches else 'process__empty'
 
-def process_any(fields, create='', drop_source=False, clear_trg=None, chk_in=True, chk_out=True, **context):
+def process_any(fields, create='', drop_source=False, clear_trg=None, wf_key='wf_key', chk_in=True, chk_out=True, **context):
     """
     Универсальная функция обработки для process_<wf_name> тасков.
     Аргументы:
@@ -188,10 +188,17 @@ def process_any(fields, create='', drop_source=False, clear_trg=None, chk_in=Tru
     """
 
     # Создаём таблицу при необходимости, выполняем очистки/вставку и логирование
-    if create: ch_hook.execute(f""" CREATE TABLE IF NOT EXISTS gp_{table} {ON_CLUSTER} {create} as {select} limit 0 """)
+    if create: 
+        ch_hook.execute(f""" 
+            CREATE TABLE IF NOT EXISTS gp_{table} {ON_CLUSTER}
+            {create} 
+            as 
+            {select} 
+            limit 0 
+        """)
     
     if clear_trg == 'drop': 
-        res = ch_hook.execute(f""" select distinct wf_key from gp_ue_exchange where wf_name = '{table}' """)
+        res = ch_hook.execute(f""" select distinct {wf_key} from gp_ue_exchange where wf_name = '{table}' """)
         for key in res:
             ch_hook.execute(f""" ALTER TABLE gp_{table} {ON_CLUSTER} DROP PARTITION '{key[0]}' """)
 
@@ -199,9 +206,9 @@ def process_any(fields, create='', drop_source=False, clear_trg=None, chk_in=Tru
         ch_hook.execute(f"""TRUNCATE TABLE gp_{table} {ON_CLUSTER}""")
 
     elif clear_trg == 'delete':
-        res = ch_hook.execute(f"""select distinct wf_key from gp_ue_exchange where wf_name = '{table}' """)
+        res = ch_hook.execute(f"""select distinct {wf_key} from gp_ue_exchange where wf_name = '{table}' """)
         for key in res:
-            ch_hook.execute(f""" DELETE FROM gp_{table} {ON_CLUSTER} WHERE wf_key = '{key[0]}' """)
+            ch_hook.execute(f""" DELETE FROM gp_{table} {ON_CLUSTER} WHERE {wf_key} = cast('{key[0]}', toTypeName({wf_key})) """)
 
     elif clear_trg == 'optimize': pass
 
@@ -212,27 +219,6 @@ def process_any(fields, create='', drop_source=False, clear_trg=None, chk_in=Tru
     ch_hook.execute(f""" insert into gp_{table} {select} """)
     
     if clear_trg == 'optimize': ch_hook.execute(f""" OPTIMIZE TABLE gp_{table} {ON_CLUSTER} """)
-
-    # логируем факт загрузки в контрольную таблицу gp__gp_exchange
-    ch_hook.execute(f"""
-        insert into gp__gp_exchange
-        select toDateTime('{now}') as insert_time
-            , 'CH_IN' as type
-            , '{table}' wf_name
-            , count(*)::text cnt
-            , sum(length(concat(a.*)))::text sum_len
-            , toJSONString(map(
-                'min_len', min(length(concat(a.*)))::text
-                , 'max_len', max(length(concat(a.*)))::text
-                , 'time', toString(nowInBlock()-now())
-            )) wf_data
-            , a.wf_key
-            , a.wf_id
-        from gp_{table} a {final}
-        where a.insert_time = toDateTime('{now}')
-        group by a.wf_id, a.wf_key
-    """)
-    logging.info("Inserted gp__gp_exchange entries for table %s", table)
 
     # проверка выходных данных (опционально)
     if chk_out:
@@ -263,6 +249,27 @@ def process_any(fields, create='', drop_source=False, clear_trg=None, chk_in=Tru
             logging.error("Data check failed in chk_out task: %s", chk_out_res)
             raise AirflowFailException("Data check failed in chk_out task")
 
+    # логируем факт загрузки в контрольную таблицу gp__gp_exchange
+    ch_hook.execute(f"""
+        insert into gp__gp_exchange
+        select toDateTime('{now}') as insert_time
+            , 'CH_IN' as type
+            , '{table}' wf_name
+            , count(*)::text cnt
+            , sum(length(concat(a.*)))::text sum_len
+            , toJSONString(map(
+                'min_len', min(length(concat(a.*)))::text
+                , 'max_len', max(length(concat(a.*)))::text
+                , 'time', toString(nowInBlock()-now())
+            )) wf_data
+            , a.wf_key
+            , a.wf_id
+        from gp_{table} a {final}
+        where a.insert_time = toDateTime('{now}')
+        group by a.wf_id, a.wf_key
+    """)
+    logging.info("Inserted gp__gp_exchange entries for table %s", table)
+
     if drop_source: ch_hook.execute(f""" ALTER TABLE gp_ue_exchange {ON_CLUSTER} DROP PARTITION '{table}' """)
 
     # Возвращаем базовую статистику по таблице
@@ -272,18 +279,25 @@ def process_any(fields, create='', drop_source=False, clear_trg=None, chk_in=Tru
                 , 'row_cnt', toString(row_cnt)
                 , 'min_ctl', toString(min_ctl)
                 , 'max_ctl', toString(max_ctl)
+                --, 'cnt_ctl', toString(cnt_ctl)
                 , 'min_its', toString(min_its)
                 , 'max_its', toString(max_its)
+                --, 'cnt_its', toString(cnt_its)
+                --, 'time', toString(nowInBlock()-toDateTime('{now}')())
             ))
         from (
             select 'all' type, count(1) row_cnt
                 , min(wf_id) min_ctl, max(wf_id)  max_ctl
+                --, count(distinct wf_id) cnt_ctl
                 , min(insert_time) min_its, max(insert_time)  max_its
+                --, count(distinct insert_time) cnt_its
             from gp_{table} {final}
             union all
             select 'now' type, count(1) row_cnt
                 , min(wf_id) min_ctl, max(wf_id)  max_ctl
-                , min(insert_time) min_its, max(insert_time)  max_its   
+                --, count(distinct wf_id) cnt_ctl
+                , min(insert_time) min_its, max(insert_time)  max_its
+                --, count(distinct insert_time) cnt_its   
             from gp_{table} {final}
             where insert_time = toDateTime('{now}')
         ) a
@@ -294,21 +308,25 @@ def process_any(fields, create='', drop_source=False, clear_trg=None, chk_in=Tru
 
 """
 DAG: 0_import_gp_ue_exchange
-Описание:
-    Загружает универсальный обмен (gp_ue_exchange) и обрабатывает отдельные
-    wf_name'ы в ClickHouse.
 
-Основной поток:
-    1) load_exchange  - вставляет данные в gp_ue_exchange (SQL_INS)
-    2) chk_meta       - проверяет метаданные (контрольные суммарные данные)
-    3) process__gp_exchange - записывает контрольные логи и подготавливает данные
-    4) branch_task    - выбирает, какие process_* задачи запускать по wf_name
-    5) process_tb_*   - создание/вставка/очистка/оптимизация целевых таблиц
+Краткое описание:
+    Загружает универсальный обмен (gp_ue_exchange) и выполняет
+    пост-процессинг по каждому wf_name.
 
-Замечания:
-    - Использует ClickHouseHook / ClickHouseOperator для взаимодействия с ClickHouse.
-    - Ожидаемые таблицы: gp_ue_exchange, gp_exchange_log, gp__gp_exchange (контроль).
-    - Для диагностики зависимостей и данных используются XCom'ы (ключ 'tables', 'chk_in', 'chk_out').
+Поведение и ключевые моменты:
+    - load_exchange: вставляет сырые записи в таблицу gp_ue_exchange (SQL_INS).
+    - chk_meta: проверяет агрегированную мета-информацию в _GP_EXCHANGE (фейлит при несоответствии).
+    - process__gp_exchange: пишет контрольные записи в gp_exchange_log и формирует данные для ветвления.
+    - branch_task: выбирает process_* задачи по наличию соответствующих wf_name.
+    - process_any (process_<wf_name>): универсальная загрузка в gp_<wf_name>,
+        создает таблицу при необходимости, поддерживает clear_trg: drop/truncate/delete/optimize,
+        опциональные проверки chk_in/chk_out, логирование загрузок в gp__gp_exchange.
+    - Вставки помечаются временем задачи (ti.start_date -> insert_time).
+    - Использует ClickHouseHook/ClickHouseOperator (по умолчанию clickhouse_conn_id=ch_local).
+    - XCom ключи: 'tables' (choose_branchs), 'chk_in', 'chk_out'.
+
+Рекомендации:
+    - Прогонять DAG в тестовой среде и проверять корректность схем контрольных таблиц.
 """
 
 with DAG(
@@ -367,13 +385,14 @@ with DAG(
                 , a.wf_data
             """,
             'create': """
-                ENGINE = MergeTree()
-                ORDER BY (wf_id, wf_key)
+                ENGINE = ReplacingMergeTree(insert_time)
+                ORDER BY (wf_id, wf_name, wf_key, type, JSONExtract(wf_data, 'wf_key', 'String'))
             """,
             'drop_source': True,
-            'clear_trg': None,
+            'clear_trg': 'optimize',
+            # 'wf_key': 'wf_id',
             'chk_in': False,
-            'chk_out': False,
+            'chk_out': True,
             }
     )
 

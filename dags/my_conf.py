@@ -27,86 +27,6 @@ default_args = dict(
     wait_for_downstream=False,
 )
 
-sql_ins = ("""
-    truncate table support.gp_ue_exchange;
-""","""
-with exchange as(
-	SELECT 1 as wf_id, 'tb_tmp1' as wf_name, toString(toDate(now())) as wf_key, printf('{"id":%d,"value":"%s","p":%d}', number, toString(nowInBlock()), sleep(1)) as wf_data from numbers(9)
-	union all
-	SELECT 2 as wf_id, 'tb_tmp1' as wf_name, toString(toDate(now())) as wf_key, printf('{"id":%d,"value":"%s","p":%d}', number*2, toString(nowInBlock()), sleep(1)) as wf_data from numbers(8)
-	union all
-	SELECT 3 as wf_id, 'tb_tmp1' as wf_name, toString(toDate(now())) as wf_key, printf('{"id":%d,"value":"%s","p":%d}', number*3, toString(nowInBlock()), sleep(1)) as wf_data from numbers(7)
-	union all
-	SELECT 4 as wf_id, 'tb_tmp1' as wf_name, toString(toDate(now())) as wf_key, printf('{"id":%d,"value":"%s","p":%d}', number*4, toString(nowInBlock()), sleep(1)) as wf_data from numbers(6)
-	
-	union ALL
-	SELECT 1 as wf_id, 'tb_tmp2' as wf_name, toString(toDate(now())) as wf_key, printf('{"id":"%s","value":%d,"p":%d}', toString(nowInBlock()), number, sleep(1)) as wf_data from numbers(9)
-	union all
-	SELECT 2 as wf_id, 'tb_tmp2' as wf_name, toString(toDate(now())) as wf_key, printf('{"id":"%s","value":%d,"p":%d}', toString(nowInBlock()), number*2, sleep(1)) as wf_data from numbers(8)
-	union all
-	SELECT 3 as wf_id, 'tb_tmp2' as wf_name, toString(toDate(now())) as wf_key, printf('{"id":"%s","value":%d,"p":%d}', toString(nowInBlock()), number*3, sleep(1)) as wf_data from numbers(7)
-
-    union all
-	SELECT 1 as wf_id, 'tb_tmp3' as wf_name, toString(toDate(now())) as wf_key, printf('{"id":%d,"value":"%s","p":%d}', number, toString(nowInBlock()), sleep(1)) as wf_data from numbers(9)
-	union all
-	SELECT 2 as wf_id, 'tb_tmp3' as wf_name, toString(toDate(now())) as wf_key, printf('{"id":%d,"value":"%s","p":%d}', number*2, toString(nowInBlock()), sleep(1)) as wf_data from numbers(8)
-	union all
-	SELECT 3 as wf_id, 'tb_tmp3' as wf_name, toString(toDate(now())) as wf_key, printf('{"id":%d,"value":"%s","p":%d}', number*3, toString(nowInBlock()), sleep(1)) as wf_data from numbers(7)
-	
-    union all
-	SELECT 1 as wf_id, 'tb_tmp4' as wf_name, toString(toDate(now())) as wf_key, printf('{"id":%d,"value":"%s","p":%d}', number, toString(nowInBlock()), sleep(1)) as wf_data from numbers(9)
-	union all
-	SELECT 2 as wf_id, 'tb_tmp4' as wf_name, toString(toDate(now())) as wf_key, printf('{"id":%d,"value":"%s","p":%d}', number*2, toString(nowInBlock()), sleep(1)) as wf_data from numbers(8)
-	union all
-	SELECT 3 as wf_id, 'tb_tmp4' as wf_name, toString(toDate(now())) as wf_key, printf('{"id":%d,"value":"%s","p":%d}', number*3, toString(nowInBlock()), sleep(1)) as wf_data from numbers(7)
-	
-), meta as (
-	select a.wf_id, a.wf_name, a.wf_key, count(1) as cnt
-		, sum(length(wf_data::text)) sum_len
-		, min(length(wf_data::text)) min_len
-		, max(length(wf_data::text)) max_len
-		, toString(nowInBlock()-now()) "time"
-	from exchange a
-	group by 1,2,3
-)
-insert into support.gp_ue_exchange 
-select * from exchange 
-union all
-select wf_id, '_gp_exchange' as wf_name, toString(now()) as wf_key
-	, printf('{"type":"OUT","wf_name":"%s","wf_key":"%s","cnt":%d,"sum_len":%d,"min_len":%d,"max_len":%d,"time":"%s"}', c.wf_name, c.wf_key, c.cnt, c.sum_len, c.min_len, c.max_len, c."time") as wf_data
-from  (
-    select * from meta a
-    union all
-    select wf_id, '_gp_exchange', toString(now()), count(1) cnt
-        , sum(sum_len) sum_len
-        , min(min_len) min_len
-        , max(max_len) max_len
-        , toString(nowInBlock()-now()) "time"
-    from meta b
-	group by 1
-) c
-SETTINGS max_block_size = 3
-""")
-
-sql_init = ("""
-    CREATE DATABASE IF NOT EXISTS support ;
-""","""
-    CREATE TABLE IF NOT EXISTS support.gp_ue_exchange
-    (
-        wf_id Int32 COMMENT 'Ключ пакета'
-        , wf_name String COMMENT 'Источник'
-        , wf_key String COMMENT 'Ключ пакета источника'
-        , wf_data String COMMENT 'Данные в формате JSON'
-    )
-    ENGINE = MergeTree()
-    ORDER BY wf_id
-    partition by wf_name
-    SETTINGS index_granularity = 8192
-;
-""")
-SQL_INIT= sql_init
-SQL_INS= sql_ins
-
 
 now='2024-06-01 12:00:00'
 
@@ -188,3 +108,88 @@ exchange_log_sql=(f"""
 #     sql=exchange_log_sql
 #  )
     
+
+#     truncate table support.gp_ue_exchange;
+# ""","""
+
+sql_ins = ("""
+with lid as (
+    select max, b.number, toString(nowInBlock()+number) tt
+    from (select nullif(max(wf_id), 0) as max from support.gp__gp_exchange) a, numbers(9) b
+), exchange as(
+    SELECT max+1 as wf_id, 'tb_tmp1' as wf_name, toString(toDate(now())+1) as wf_key, printf('{"id":%d,"value":"%s"}', number, toString(nowInBlock())) as wf_data from lid
+    union all
+    SELECT max+2 as wf_id, 'tb_tmp1' as wf_name, toString(toDate(now())+2) as wf_key, printf('{"id":%d,"value":"%s"}', number*2, toString(nowInBlock())) as wf_data from lid
+    union all
+    SELECT max+3 as wf_id, 'tb_tmp1' as wf_name, toString(toDate(now())+3) as wf_key, printf('{"id":%d,"value":"%s"}', number*3, toString(nowInBlock())) as wf_data from lid
+    union all
+    SELECT max+4 as wf_id, 'tb_tmp1' as wf_name, toString(toDate(now())+4) as wf_key, printf('{"id":%d,"value":"%s"}', number*4, toString(nowInBlock())) as wf_data from lid
+    
+    union ALL
+    SELECT max+1 as wf_id, 'tb_tmp2' as wf_name, toString(toDate(now())+1) as wf_key, printf('{"id":"%s","value":%d}', toString(nowInBlock()), number) as wf_data from lid
+    union all
+    SELECT max+2 as wf_id, 'tb_tmp2' as wf_name, toString(toDate(now())+2) as wf_key, printf('{"id":"%s","value":%d}', toString(nowInBlock()), number*2) as wf_data from lid
+    union all
+    SELECT max+3 as wf_id, 'tb_tmp2' as wf_name, toString(toDate(now())+4) as wf_key, printf('{"id":"%s","value":%d}', toString(nowInBlock()), number*3) as wf_data from lid
+
+    union all
+    SELECT max+1 as wf_id, 'tb_tmp3' as wf_name, toString(toDate(now())+1) as wf_key, printf('{"id":%d,"value":"%s"}', number, toString(nowInBlock())) as wf_data from lid
+    union all
+    SELECT max+2 as wf_id, 'tb_tmp3' as wf_name, toString(toDate(now())+2) as wf_key, printf('{"id":%d,"value":"%s"}', number*2, toString(nowInBlock())) as wf_data from lid
+    union all
+    SELECT max+3 as wf_id, 'tb_tmp3' as wf_name, toString(toDate(now())+3) as wf_key, printf('{"id":%d,"value":"%s"}', number*3, toString(nowInBlock())) as wf_data from lid
+    
+    union all
+    SELECT max+1 as wf_id, 'tb_tmp4' as wf_name, toString(toDate(now())+4) as wf_key, printf('{"id":%d,"value":"%s"}', number, toString(nowInBlock())) as wf_data from lid
+    union all
+    SELECT max+2 as wf_id, 'tb_tmp4' as wf_name, toString(toDate(now())+5) as wf_key, printf('{"id":%d,"value":"%s"}', number*2, toString(nowInBlock())) as wf_data from lid
+    union all
+    SELECT max+3 as wf_id, 'tb_tmp4' as wf_name, toString(toDate(now())+6) as wf_key, printf('{"id":%d,"value":"%s"}', number*3, toString(nowInBlock())) as wf_data from lid
+    
+), meta as (
+    select a.wf_id, a.wf_name, a.wf_key, count(1) as cnt
+        , sum(length(wf_data::text)) sum_len
+        , min(length(wf_data::text)) min_len
+        , max(length(wf_data::text)) max_len
+        , toString(nowInBlock()-now()) "time"
+    from exchange a
+    group by 1,2,3
+)
+insert into support.gp_ue_exchange 
+select * from exchange 
+union all
+select wf_id, '_gp_exchange' as wf_name, toString(now()) as wf_key
+    , printf('{"type":"OUT","wf_name":"%s","wf_key":"%s","cnt":%d,"sum_len":%d,"min_len":%d,"max_len":%d,"time":"%s"}', c.wf_name, c.wf_key, c.cnt, c.sum_len, c.min_len, c.max_len, c."time") as wf_data
+from  (
+    select * from meta a
+    union all
+    select wf_id, '_gp_exchange'
+        , toString(now())
+        , count(1) + 1 cnt
+        , sum(sum_len) sum_len
+        , min(min_len) min_len
+        , max(max_len) max_len
+        , toString(nowInBlock()-now()) "time"
+    from meta b
+    group by 1
+) c
+""")
+
+sql_init = ("""
+    CREATE DATABASE IF NOT EXISTS support ;
+""","""
+    CREATE TABLE IF NOT EXISTS support.gp_ue_exchange
+    (
+        wf_id Int32 COMMENT 'Ключ пакета'
+        , wf_name String COMMENT 'Источник'
+        , wf_key String COMMENT 'Ключ пакета источника'
+        , wf_data String COMMENT 'Данные в формате JSON'
+    )
+    ENGINE = MergeTree()
+    ORDER BY wf_id
+    partition by wf_name
+    SETTINGS index_granularity = 8192
+;
+""")
+SQL_INIT= sql_init
+SQL_INS= sql_ins
