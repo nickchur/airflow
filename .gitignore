@@ -1,7 +1,8 @@
-/logs
-/logs/scheduler
+.git
+*.pyo
 *.log
 *.pyc
-*.pyc
+/logs
 /.vscode
 /dags/__pycache__
+__pycache__
